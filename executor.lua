@@ -57,7 +57,7 @@ frame.Active = true
 local miniBtn = Instance.new("TextButton", gui)
 miniBtn.Size = UDim2.new(0,50,0,50)
 miniBtn.Position = UDim2.new(0.05,0,0.4,0)
-miniBtn.Text = "≡"
+miniBtn.Text = "💀"
 miniBtn.Visible = false
 
 --------------------------------------------------
@@ -65,7 +65,7 @@ miniBtn.Visible = false
 --------------------------------------------------
 local top = Instance.new("TextLabel", frame)
 top.Size = UDim2.new(1,0,0,35)
-top.Text = "SCRIPT LOADER"
+top.Text = "EXECUTOR H4LL0"
 top.TextScaled = true
 top.BackgroundTransparency = 1
 
@@ -109,7 +109,7 @@ urlBox.PlaceholderText = "RAW URL..."
 local runBtn = Instance.new("TextButton", mainPage)
 runBtn.Size = UDim2.new(0.9,0,0,40)
 runBtn.Position = UDim2.new(0.05,0,0.55,0)
-runBtn.Text = "RUN"
+runBtn.Text = "Execute"
 
 local runStatus = Instance.new("TextLabel", mainPage)
 runStatus.Size = UDim2.new(1,0,0,25)
