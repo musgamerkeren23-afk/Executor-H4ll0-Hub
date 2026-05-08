@@ -88,7 +88,7 @@ miniBtn.Visible = false
 --------------------------------------------------
 local top = Instance.new("TextLabel", frame)
 top.Size = UDim2.new(1,0,0,35)
-top.Text = "🩸𝙴𝚇𝙴𝙲𝚄𝚃𝙾𝚁 𝙷𝟺𝙻𝙻𝟶💀"
+top.Text = "3X3CUT0R H4LL0💀"
 top.TextScaled = true
 top.BackgroundTransparency = 1
 
