@@ -3,6 +3,12 @@ if not game:IsLoaded() then game.Loaded:Wait() end
 local player = game.Players.LocalPlayer
 local UIS = game:GetService("UserInputService")
 
+-- 🎨 COLOR THEME
+local DARK = Color3.fromRGB(25, 0, 0)        -- background
+local RED = Color3.fromRGB(120, 0, 0)        -- button
+local NEON = Color3.fromRGB(255, 0, 0)       -- outline neon
+local WHITE = Color3.fromRGB(255, 255, 255)  -- text
+
 --------------------------------------------------
 -- 🔑 KEY SYSTEM
 --------------------------------------------------
@@ -23,7 +29,7 @@ login.BackgroundColor3 = Color3.fromRGB(20,20,20)
 
 local title = Instance.new("TextLabel", login)
 title.Size = UDim2.new(1,0,0,40)
-title.Text = "ENTER KEY"
+title.Text = "🔑ENTER KEY🔒"
 title.TextScaled = true
 title.TextColor3 = Color3.fromRGB(0,255,255)
 title.BackgroundTransparency = 1
@@ -49,9 +55,15 @@ status.BackgroundTransparency = 1
 local frame = Instance.new("Frame", gui)
 frame.Size = UDim2.new(0,350,0,230)
 frame.Position = UDim2.new(0.35,0,0.35,0)
-frame.BackgroundColor3 = Color3.fromRGB(20,20,20)
+frame.BackgroundColor3 = DARK
 frame.Visible = false
 frame.Active = true
+
+-- 🔴 INI OUTLINE NYA
+local stroke = Instance.new("UIStroke")
+stroke.Parent = frame
+stroke.Color = NEON
+stroke.Thickness = 2
 
 -- MINI BUTTON
 local miniBtn = Instance.new("TextButton", gui)
@@ -65,7 +77,7 @@ miniBtn.Visible = false
 --------------------------------------------------
 local top = Instance.new("TextLabel", frame)
 top.Size = UDim2.new(1,0,0,35)
-top.Text = "EXECUTOR H4LL0"
+top.Text = "🩸EXECUTOR H4LL0💀"
 top.TextScaled = true
 top.BackgroundTransparency = 1
 
@@ -109,7 +121,7 @@ urlBox.PlaceholderText = "RAW URL..."
 local runBtn = Instance.new("TextButton", mainPage)
 runBtn.Size = UDim2.new(0.9,0,0,40)
 runBtn.Position = UDim2.new(0.05,0,0.55,0)
-runBtn.Text = "Execute"
+runBtn.Text = "📥Execute"
 
 local runStatus = Instance.new("TextLabel", mainPage)
 runStatus.Size = UDim2.new(1,0,0,25)
@@ -165,13 +177,13 @@ end)
 --------------------------------------------------
 btn.MouseButton1Click:Connect(function()
     if box.Text == VALID_KEY then
-        status.Text = "Access Granted"
+        status.Text = "Access Granted✅"
         task.wait(1)
 
         login.Visible = false
         frame.Visible = true
     else
-        status.Text = "Invalid Key"
+        status.Text = "Invalid Key❌"
     end
 end)
 
