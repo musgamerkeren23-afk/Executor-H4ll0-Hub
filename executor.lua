@@ -31,7 +31,7 @@ local title = Instance.new("TextLabel", login)
 title.Size = UDim2.new(1,0,0,40)
 title.Text = "🔑ENTER KEY🔒"
 title.TextScaled = true
-title.TextColor3 = Color3.fromRGB(0,255,255)
+title.TextColor3 = RED
 title.BackgroundTransparency = 1
 
 local box = Instance.new("TextBox", login)
@@ -116,7 +116,7 @@ setTab.Text = "Settings"
 local urlBox = Instance.new("TextBox", mainPage)
 urlBox.Size = UDim2.new(0.9,0,0,40)
 urlBox.Position = UDim2.new(0.05,0,0.2,0)
-urlBox.PlaceholderText = "RAW URL..."
+urlBox.PlaceholderText = "🔗RAW URL..."
 
 local runBtn = Instance.new("TextButton", mainPage)
 runBtn.Size = UDim2.new(0.9,0,0,40)
