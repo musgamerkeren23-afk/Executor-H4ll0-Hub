@@ -1,18 +1,52 @@
 if not game:IsLoaded() then game.Loaded:Wait() end
 
 local player = game.Players.LocalPlayer
+local HttpService = game:GetService("HttpService")
 local UIS = game:GetService("UserInputService")
 
--- 🎨 COLOR THEME
-local DARK = Color3.fromRGB(25, 0, 0)        -- background
-local RED = Color3.fromRGB(120, 0, 0)        -- button
-local NEON = Color3.fromRGB(255, 0, 0)       -- outline neon
-local WHITE = Color3.fromRGB(255, 255, 255)  -- text
+--------------------------------------------------
+-- 🎨 THEME
+--------------------------------------------------
+local DARK = Color3.fromRGB(25,0,0)
+local RED = Color3.fromRGB(120,0,0)
+local NEON = Color3.fromRGB(255,0,0)
+local WHITE = Color3.fromRGB(255,255,255)
 
 --------------------------------------------------
 -- 🔑 KEY SYSTEM
 --------------------------------------------------
-local VALID_KEY = "H4LL0_3X3CUT0R_B4S1C"
+local KEYS = {
+    ["H4LL0_3X3CUT0R_B4S1C"] = {vip = false, created = os.time()},
+    ["VIP_FULL_ACCESS"] = {vip = true, created = os.time()}
+}
+
+local function isValid(key)
+    local data = KEYS[key]
+    if not data then return false end
+    if data.vip then return true end
+    return (os.time() - data.created <= 86400)
+end
+
+--------------------------------------------------
+-- 💾 SAVE SYSTEM
+--------------------------------------------------
+local FILE = "saved_scripts.json"
+local saved = {}
+
+if isfile and isfile(FILE) then
+    saved = HttpService:JSONDecode(readfile(FILE))
+end
+
+local function saveData()
+    writefile(FILE, HttpService:JSONEncode(saved))
+end
+
+--------------------------------------------------
+-- ⚙️ SCRIPT FUNCTIONS
+--------------------------------------------------
+local function runScript(code)
+    pcall(function() loadstring(code)() end)
+end
 
 --------------------------------------------------
 -- 📱 GUI
@@ -20,82 +54,68 @@ local VALID_KEY = "H4LL0_3X3CUT0R_B4S1C"
 local gui = Instance.new("ScreenGui", player:WaitForChild("PlayerGui"))
 
 --------------------------------------------------
--- 🔐 LOGIN FRAME
+-- 🔐 LOGIN
 --------------------------------------------------
 local login = Instance.new("Frame", gui)
 login.Size = UDim2.new(0,300,0,180)
 login.Position = UDim2.new(0.35,0,0.35,0)
-login.BackgroundColor3 = Color3.fromRGB(20,20,20)
+login.BackgroundColor3 = DARK
 
-local title = Instance.new("TextLabel", login)
-title.Size = UDim2.new(1,0,0,40)
-title.Text = "🔑ENTER KEY🔒"
-title.TextScaled = true
-title.TextColor3 = RED
-title.BackgroundTransparency = 1
+Instance.new("UIStroke", login).Color = NEON
 
 local box = Instance.new("TextBox", login)
 box.Size = UDim2.new(0.8,0,0,40)
-box.Position = UDim2.new(0.1,0,0.35,0)
-box.PlaceholderText = "Input Key..."
+box.Position = UDim2.new(0.1,0,0.3,0)
+box.PlaceholderText = "🔑Enter Key..."
+box.BackgroundColor3 = RED
+box.TextColor3 = WHITE
 
 local btn = Instance.new("TextButton", login)
 btn.Size = UDim2.new(0.8,0,0,40)
-btn.Position = UDim2.new(0.1,0,0.65,0)
-btn.Text = "VERIFY"
-
-local button = Instance.new("TextButton", frame)
-button.Size = UDim2.new(0,200,0,40)
-button.BackgroundColor3 = RED
-button.TextColor3 = WHITE
-
--- 🔴 OUTLINE BUTTON
-local stroke2 = Instance.new("UIStroke")
-stroke2.Parent = button
-stroke2.Color = NEON
-stroke2.Thickness = 2
+btn.Position = UDim2.new(0.1,0,0.6,0)
+btn.Text = "🔓VERIFY"
+btn.BackgroundColor3 = RED
+btn.TextColor3 = WHITE
 
 local status = Instance.new("TextLabel", login)
-status.Size = UDim2.new(1,0,0,25)
-status.Position = UDim2.new(0,0,0.85,0)
+status.Size = UDim2.new(1,0,0,30)
+status.Position = UDim2.new(0,0,0.8,0)
 status.BackgroundTransparency = 1
+status.TextColor3 = WHITE
 
 --------------------------------------------------
--- 🧠 MAIN LOADER (HIDDEN AWAL)
+-- 🧠 MAIN
 --------------------------------------------------
 local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0,350,0,230)
+frame.Size = UDim2.new(0,380,0,260)
 frame.Position = UDim2.new(0.35,0,0.35,0)
 frame.BackgroundColor3 = DARK
 frame.Visible = false
 frame.Active = true
 
--- 🔴 INI OUTLINE NYA
-local stroke = Instance.new("UIStroke")
-stroke.Parent = frame
-stroke.Color = NEON
-stroke.Thickness = 2
+Instance.new("UIStroke", frame).Color = NEON
 
--- MINI BUTTON
-local miniBtn = Instance.new("TextButton", gui)
-miniBtn.Size = UDim2.new(0,50,0,50)
-miniBtn.Position = UDim2.new(0.05,0,0.4,0)
-miniBtn.Text = "💀"
-miniBtn.Visible = false
+--------------------------------------------------
+-- ❌ MINIMIZE
+--------------------------------------------------
+local mini = Instance.new("TextButton", gui)
+mini.Size = UDim2.new(0,50,0,50)
+mini.Position = UDim2.new(0.05,0,0.4,0)
+mini.Text = "💀"
+mini.Visible = false
+mini.BackgroundColor3 = DARK
+mini.TextColor3 = WHITE
+Instance.new("UIStroke", mini).Color = NEON
 
 --------------------------------------------------
 -- 🔹 TOP
 --------------------------------------------------
-local top = Instance.new("TextLabel", frame)
-top.Size = UDim2.new(1,0,0,35)
-top.Text = "3X3CUT0R H4LL0💀"
-top.TextScaled = true
-top.BackgroundTransparency = 1
-
-local closeBtn = Instance.new("TextButton", frame)
-closeBtn.Size = UDim2.new(0,30,0,30)
-closeBtn.Position = UDim2.new(1,-35,0,5)
-closeBtn.Text = "❌"
+local close = Instance.new("TextButton", frame)
+close.Size = UDim2.new(0,30,0,30)
+close.Position = UDim2.new(1,-35,0,5)
+close.Text = "❌"
+close.BackgroundColor3 = RED
+close.TextColor3 = WHITE
 
 --------------------------------------------------
 -- 📄 PAGES
@@ -104,146 +124,204 @@ local mainPage = Instance.new("Frame", frame)
 mainPage.Size = UDim2.new(1,0,1,-65)
 mainPage.Position = UDim2.new(0,0,0,65)
 
+local savedPage = Instance.new("ScrollingFrame", frame)
+savedPage.Size = mainPage.Size
+savedPage.Position = mainPage.Position
+savedPage.Visible = false
+savedPage.CanvasSize = UDim2.new(0,0,0,0)
+
 local settingsPage = mainPage:Clone()
 settingsPage.Parent = frame
 settingsPage.Visible = false
 
 --------------------------------------------------
--- 🔘 TAB
+-- 🔘 TABS
 --------------------------------------------------
-local mainTab = Instance.new("TextButton", frame)
-mainTab.Size = UDim2.new(0.5,0,0,30)
-mainTab.Position = UDim2.new(0,0,0,35)
-mainTab.Text = "Main"
+local tabs = {"Main","Saved","Settings"}
+local pages = {mainPage,savedPage,settingsPage}
 
-local setTab = Instance.new("TextButton", frame)
-setTab.Size = UDim2.new(0.5,0,0,30)
-setTab.Position = UDim2.new(0.5,0,0,35)
-setTab.Text = "Settings"
+for i,name in ipairs(tabs) do
+    local tab = Instance.new("TextButton", frame)
+    tab.Size = UDim2.new(1/3,0,0,30)
+    tab.Position = UDim2.new((i-1)/3,0,0,35)
+    tab.Text = name
+    tab.BackgroundColor3 = RED
+    tab.TextColor3 = WHITE
 
---------------------------------------------------
--- 🏠 MAIN PAGE
---------------------------------------------------
-local urlBox = Instance.new("TextBox", mainPage)
-urlBox.Size = UDim2.new(0.9,0,0,40)
-urlBox.Position = UDim2.new(0.05,0,0.2,0)
-urlBox.PlaceholderText = "🔗RAW URL..."
-
-local runBtn = Instance.new("TextButton", mainPage)
-runBtn.Size = UDim2.new(0.9,0,0,40)
-runBtn.Position = UDim2.new(0.05,0,0.55,0)
-runBtn.Text = "📥Execute"
-
-local runStatus = Instance.new("TextLabel", mainPage)
-runStatus.Size = UDim2.new(1,0,0,25)
-runStatus.Position = UDim2.new(0,0,0.8,0)
-runStatus.BackgroundTransparency = 1
-
---------------------------------------------------
--- ⚙️ SETTINGS
---------------------------------------------------
-local info = Instance.new("TextLabel", settingsPage)
-info.Size = UDim2.new(1,0,1,0)
-info.Text = "Settings Page"
-info.TextScaled = true
-info.BackgroundTransparency = 1
-
---------------------------------------------------
--- 🔄 TAB SWITCH
---------------------------------------------------
-mainTab.MouseButton1Click:Connect(function()
-    mainPage.Visible = true
-    settingsPage.Visible = false
-end)
-
-setTab.MouseButton1Click:Connect(function()
-    mainPage.Visible = false
-    settingsPage.Visible = true
-end)
-
---------------------------------------------------
--- ▶️ RUN SCRIPT
---------------------------------------------------
-runBtn.MouseButton1Click:Connect(function()
-    local url = urlBox.Text
-
-    local ok, result = pcall(function()
-        return game:HttpGet(url)
+    tab.MouseButton1Click:Connect(function()
+        for _,p in pairs(pages) do p.Visible = false end
+        pages[i].Visible = true
     end)
+end
 
-    if not ok then
-        runStatus.Text = "Fetch Error"
-        return
+--------------------------------------------------
+-- 🏠 MAIN
+--------------------------------------------------
+local url = Instance.new("TextBox", mainPage)
+url.Size = UDim2.new(0.9,0,0,40)
+url.Position = UDim2.new(0.05,0,0.2,0)
+url.PlaceholderText = "RAW URL..."
+url.BackgroundColor3 = RED
+url.TextColor3 = WHITE
+
+local run = Instance.new("TextButton", mainPage)
+run.Size = UDim2.new(0.9,0,0,40)
+run.Position = UDim2.new(0.05,0,0.55,0)
+run.Text = "EXECUTE"
+run.BackgroundColor3 = RED
+run.TextColor3 = WHITE
+
+run.MouseButton1Click:Connect(function()
+    local ok,res = pcall(function() return game:HttpGet(url.Text) end)
+    if ok then runScript(res) end
+end)
+
+--------------------------------------------------
+-- 📜 SAVED SYSTEM
+--------------------------------------------------
+local function refresh()
+    savedPage:ClearAllChildren()
+
+    for i,v in ipairs(saved) do
+        local y = (i-1)*50
+
+        local name = Instance.new("TextButton", savedPage)
+        name.Size = UDim2.new(0.45,0,0,40)
+        name.Position = UDim2.new(0.02,0,0,y)
+        name.Text = v.name
+
+        local exec = Instance.new("TextButton", savedPage)
+        exec.Size = UDim2.new(0.15,0,0,40)
+        exec.Position = UDim2.new(0.5,0,0,y)
+        exec.Text = "▶"
+
+        local edit = Instance.new("TextButton", savedPage)
+        edit.Size = UDim2.new(0.15,0,0,40)
+        edit.Position = UDim2.new(0.67,0,0,y)
+        edit.Text = "✏️"
+
+        local del = Instance.new("TextButton", savedPage)
+        del.Size = UDim2.new(0.15,0,0,40)
+        del.Position = UDim2.new(0.84,0,0,y)
+        del.Text = "X"
+
+        exec.MouseButton1Click:Connect(function()
+            runScript(v.code)
+        end)
+
+        edit.MouseButton1Click:Connect(function()
+            popup.Visible = true
+            nameBox.Text = v.name
+            scriptBox.Text = v.code
+            editing = i
+        end)
+
+        del.MouseButton1Click:Connect(function()
+            table.remove(saved,i)
+            saveData()
+            refresh()
+        end)
     end
 
-    local ok2 = pcall(function()
-        loadstring(result)()
-    end)
+    savedPage.CanvasSize = UDim2.new(0,0,0,#saved*50)
+end
 
-    runStatus.Text = ok2 and "Success ✔" or "Error"
+--------------------------------------------------
+-- ➕ ADD
+--------------------------------------------------
+local add = Instance.new("TextButton", savedPage)
+add.Size = UDim2.new(0,40,0,40)
+add.Position = UDim2.new(1,-45,0,5)
+add.Text = "+"
+
+--------------------------------------------------
+-- 📥 POPUP
+--------------------------------------------------
+local popup = Instance.new("Frame", gui)
+popup.Size = UDim2.new(0,300,0,220)
+popup.Position = UDim2.new(0.35,0,0.35,0)
+popup.Visible = false
+popup.BackgroundColor3 = DARK
+
+local nameBox = Instance.new("TextBox", popup)
+nameBox.Size = UDim2.new(0.9,0,0,40)
+nameBox.Position = UDim2.new(0.05,0,0.15,0)
+nameBox.PlaceholderText = "Name"
+
+local scriptBox = Instance.new("TextBox", popup)
+scriptBox.Size = UDim2.new(0.9,0,0,60)
+scriptBox.Position = UDim2.new(0.05,0,0.4,0)
+scriptBox.PlaceholderText = "Script"
+scriptBox.MultiLine = true
+
+local saveBtn = Instance.new("TextButton", popup)
+saveBtn.Size = UDim2.new(0.9,0,0,40)
+saveBtn.Position = UDim2.new(0.05,0,0.75,0)
+saveBtn.Text = "SAVE"
+
+local editing = nil
+
+add.MouseButton1Click:Connect(function()
+    popup.Visible = true
+    editing = nil
+end)
+
+saveBtn.MouseButton1Click:Connect(function()
+    if editing then
+        saved[editing] = {name=nameBox.Text, code=scriptBox.Text}
+    else
+        table.insert(saved,{name=nameBox.Text, code=scriptBox.Text})
+    end
+    saveData()
+    popup.Visible = false
+    refresh()
 end)
 
 --------------------------------------------------
 -- 🔐 VERIFY
 --------------------------------------------------
 btn.MouseButton1Click:Connect(function()
-    if box.Text == VALID_KEY then
-        status.Text = "Access Granted✅"
-        task.wait(1)
-
+    if isValid(box.Text) then
         login.Visible = false
         frame.Visible = true
+        refresh()
     else
-        status.Text = "Invalid Key❌"
+        status.Text = "Invalid / Expired"
     end
 end)
 
 --------------------------------------------------
 -- ❌ MINIMIZE
 --------------------------------------------------
-closeBtn.MouseButton1Click:Connect(function()
+close.MouseButton1Click:Connect(function()
     frame.Visible = false
-    miniBtn.Visible = true
+    mini.Visible = true
 end)
 
-miniBtn.MouseButton1Click:Connect(function()
+mini.MouseButton1Click:Connect(function()
     frame.Visible = true
-    miniBtn.Visible = false
+    mini.Visible = false
 end)
 
 --------------------------------------------------
 -- 🖱️ DRAG
 --------------------------------------------------
 local function drag(obj)
-    local dragging = false
-    local dragStart, startPos
-
-    obj.InputBegan:Connect(function(input)
-        if input.UserInputType == Enum.UserInputType.Touch 
-        or input.UserInputType == Enum.UserInputType.MouseButton1 then
-            dragging = true
-            dragStart = input.Position
-            startPos = obj.Position
+    local d=false; local s; local p
+    obj.InputBegan:Connect(function(i)
+        if i.UserInputType==Enum.UserInputType.MouseButton1 then
+            d=true; s=i.Position; p=obj.Position
         end
     end)
-
-    obj.InputChanged:Connect(function(input)
-        if dragging then
-            local delta = input.Position - dragStart
-            obj.Position = UDim2.new(
-                startPos.X.Scale,
-                startPos.X.Offset + delta.X,
-                startPos.Y.Scale,
-                startPos.Y.Offset + delta.Y
-            )
+    obj.InputChanged:Connect(function(i)
+        if d then
+            local delta=i.Position-s
+            obj.Position=UDim2.new(p.X.Scale,p.X.Offset+delta.X,p.Y.Scale,p.Y.Offset+delta.Y)
         end
     end)
-
-    obj.InputEnded:Connect(function()
-        dragging = false
-    end)
+    obj.InputEnded:Connect(function() d=false end)
 end
 
-drag(login)
 drag(frame)
-drag(miniBtn)
+drag(login)
+drag(mini)
