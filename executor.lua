@@ -44,6 +44,17 @@ btn.Size = UDim2.new(0.8,0,0,40)
 btn.Position = UDim2.new(0.1,0,0.65,0)
 btn.Text = "VERIFY"
 
+local button = Instance.new("TextButton", frame)
+button.Size = UDim2.new(0,200,0,40)
+button.BackgroundColor3 = RED
+button.TextColor3 = WHITE
+
+-- 🔴 OUTLINE BUTTON
+local stroke2 = Instance.new("UIStroke")
+stroke2.Parent = button
+stroke2.Color = NEON
+stroke2.Thickness = 2
+
 local status = Instance.new("TextLabel", login)
 status.Size = UDim2.new(1,0,0,25)
 status.Position = UDim2.new(0,0,0.85,0)
@@ -77,14 +88,14 @@ miniBtn.Visible = false
 --------------------------------------------------
 local top = Instance.new("TextLabel", frame)
 top.Size = UDim2.new(1,0,0,35)
-top.Text = "🩸EXECUTOR H4LL0💀"
+top.Text = "🩸𝙴𝚇𝙴𝙲𝚄𝚃𝙾𝚁 𝙷𝟺𝙻𝙻𝟶💀"
 top.TextScaled = true
 top.BackgroundTransparency = 1
 
 local closeBtn = Instance.new("TextButton", frame)
 closeBtn.Size = UDim2.new(0,30,0,30)
 closeBtn.Position = UDim2.new(1,-35,0,5)
-closeBtn.Text = "X"
+closeBtn.Text = "❌"
 
 --------------------------------------------------
 -- 📄 PAGES
