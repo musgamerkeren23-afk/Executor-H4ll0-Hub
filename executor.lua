@@ -102,7 +102,7 @@ Instance.new("UIStroke", frame).Color = NEON
 local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1,0,0,30)
 title.Text = "3X3CUT0R H3LL0💀"
-title.TextColor3 = WHITE
+title.TextColor3 = RED
 title.BackgroundTransparency = 1
 title.TextScaled = true
 
@@ -171,15 +171,15 @@ local url = Instance.new("TextBox", mainPage)
 url.Size = UDim2.new(0.9,0,0,40)
 url.Position = UDim2.new(0.05,0,0.2,0)
 url.PlaceholderText = "📤RAW URL..."
-url.BackgroundColor3 = RED
-url.TextColor3 = WHITE
+url.BackgroundColor3 = DARK
+url.TextColor3 = RED
 
 local run = Instance.new("TextButton", mainPage)
 run.Size = UDim2.new(0.9,0,0,40)
 run.Position = UDim2.new(0.05,0,0.55,0)
 run.Text = "📥RUN SCRIPT"
-run.BackgroundColor3 = RED
-run.TextColor3 = WHITE
+run.BackgroundColor3 = DARK
+run.TextColor3 = RED
 
 run.MouseButton1Click:Connect(function()
     local ok,res = pcall(function() return game:HttpGet(url.Text) end)
