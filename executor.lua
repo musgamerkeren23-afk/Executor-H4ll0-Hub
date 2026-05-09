@@ -59,7 +59,7 @@ Instance.new("UIStroke", login).Color = NEON
 
 local titleLogin = Instance.new("TextLabel", login)
 titleLogin.Size = UDim2.new(1,0,0,40)
-titleLogin.Text = "EXECUTOR H3LL0💀"
+titleLogin.Text = "3X3CUT0R H3LL0💀"
 titleLogin.TextColor3 = RED
 titleLogin.BackgroundTransparency = 1
 titleLogin.TextScaled = true
@@ -67,14 +67,14 @@ titleLogin.TextScaled = true
 local box = Instance.new("TextBox", login)
 box.Size = UDim2.new(0.8,0,0,40)
 box.Position = UDim2.new(0.1,0,0.3,0)
-box.PlaceholderText = "Enter Key..."
+box.PlaceholderText = "🔑Enter Key..."
 box.BackgroundColor3 = DARK
 box.TextColor3 = RED
 
 local btn = Instance.new("TextButton", login)
 btn.Size = UDim2.new(0.8,0,0,40)
 btn.Position = UDim2.new(0.1,0,0.6,0)
-btn.Text = "VERIFY"
+btn.Text = "🔐VERIFY"
 btn.BackgroundColor3 = DARK
 btn.TextColor3 = RED
 
@@ -97,7 +97,7 @@ Instance.new("UIStroke", frame).Color = NEON
 
 local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1,0,0,30)
-title.Text = "EXECUTOR H3LL0💀"
+title.Text = "3X3CUT0R H3LL0💀"
 title.TextColor3 = RED
 title.BackgroundTransparency = 1
 title.TextScaled = true
@@ -108,7 +108,7 @@ title.TextScaled = true
 local mini = Instance.new("TextButton", gui)
 mini.Size = UDim2.new(0,50,0,50)
 mini.Position = UDim2.new(0.05,0,0.4,0)
-mini.Text = "≡"
+mini.Text = "💀"
 mini.Visible = false
 mini.BackgroundColor3 = DARK
 mini.TextColor3 = RED
@@ -117,7 +117,7 @@ Instance.new("UIStroke", mini).Color = NEON
 local close = Instance.new("TextButton", frame)
 close.Size = UDim2.new(0,30,0,30)
 close.Position = UDim2.new(1,-35,0,0)
-close.Text = "X"
+close.Text = "❌"
 close.BackgroundColor3 = DARK
 close.TextColor3 = RED
 
@@ -167,14 +167,14 @@ end
 local url = Instance.new("TextBox", mainPage)
 url.Size = UDim2.new(0.9,0,0,40)
 url.Position = UDim2.new(0.05,0,0.2,0)
-url.PlaceholderText = "RAW URL..."
+url.PlaceholderText = "🔗RAW URL..."
 url.BackgroundColor3 = DARK
 url.TextColor3 = RED
 
 local run = Instance.new("TextButton", mainPage)
 run.Size = UDim2.new(0.9,0,0,40)
 run.Position = UDim2.new(0.05,0,0.55,0)
-run.Text = "RUN"
+run.Text = "📥RUN"
 run.BackgroundColor3 = DARK
 run.TextColor3 = RED
 
@@ -206,7 +206,7 @@ local function refresh()
         exec.Name = "Item"
         exec.Size = UDim2.new(0.18,0,0,40)
         exec.Position = UDim2.new(0.45,0,0,y)
-        exec.Text = "▶"
+        exec.Text = "▶️"
         exec.TextColor3 = RED
         exec.BackgroundColor3 = DARK
 
@@ -222,7 +222,7 @@ local function refresh()
         del.Name = "Item"
         del.Size = UDim2.new(0.18,0,0,40)
         del.Position = UDim2.new(0.83,0,0,y)
-        del.Text = "X"
+        del.Text = "❌"
         del.TextColor3 = RED
         del.BackgroundColor3 = DARK
 
@@ -253,7 +253,7 @@ end
 local add = Instance.new("TextButton", savedPage)
 add.Size = UDim2.new(0,40,0,40)
 add.Position = UDim2.new(0,5,0,5) -- FIX posisi
-add.Text = "+"
+add.Text = "➕"
 add.ZIndex = 10
 add.TextColor3 = RED
 add.BackgroundColor3 = DARK
@@ -285,7 +285,7 @@ scriptBox.BackgroundColor3 = DARK
 local saveBtn = Instance.new("TextButton", popup)
 saveBtn.Size = UDim2.new(0.9,0,0,40)
 saveBtn.Position = UDim2.new(0.05,0,0.75,0)
-saveBtn.Text = "SAVE"
+saveBtn.Text = "SAVE📩"
 saveBtn.TextColor3 = RED
 saveBtn.BackgroundColor3 = DARK
 
@@ -325,7 +325,7 @@ btn.MouseButton1Click:Connect(function()
         frame.Visible = true
         refresh()
     else
-        status.Text = "Invalid / Expired"
+        status.Text = "❌Invalid / Expired⚠️"
     end
 end)
 
