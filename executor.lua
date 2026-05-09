@@ -84,7 +84,7 @@ stroke(login)
 
 local titleLogin = Instance.new("TextLabel", login)
 titleLogin.Size = UDim2.new(1,0,0,40)
-titleLogin.Text = "EXECUTOR H3LL0💀"
+titleLogin.Text = "3X3CUT0R H3LL0💀"
 titleLogin.TextColor3 = RED
 titleLogin.BackgroundTransparency = 1
 titleLogin.TextScaled = true
@@ -124,7 +124,7 @@ stroke(frame)
 
 local title = Instance.new("TextLabel", frame)
 title.Size = UDim2.new(1,0,0,30)
-title.Text = "EXECUTOR H3LL0💀"
+title.Text = "3X3CUT0R H3LL0💀"
 title.TextColor3 = RED
 title.BackgroundTransparency = 1
 title.TextScaled = true
@@ -135,7 +135,7 @@ title.TextScaled = true
 local mini = Instance.new("TextButton", gui)
 mini.Size = UDim2.new(0,50,0,50)
 mini.Position = UDim2.new(0.05,0,0.4,0)
-mini.Text = "≡"
+mini.Text = "💀"
 mini.Visible = false
 mini.BackgroundColor3 = DARK
 mini.TextColor3 = RED
@@ -207,7 +207,7 @@ stroke(url)
 local run = Instance.new("TextButton", mainPage)
 run.Size = UDim2.new(0.9,0,0,40)
 run.Position = UDim2.new(0.05,0,0.55,0)
-run.Text = "RUN"
+run.Text = "EXECUTE"
 run.BackgroundColor3 = DARK
 run.TextColor3 = RED
 stroke(run)
